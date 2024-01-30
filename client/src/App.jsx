@@ -1,53 +1,47 @@
-import React, { useEffect, useRef } from "react"
 import { useQuery } from "react-query"
+import { useDispatch, useSelector } from "react-redux"
+import {
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    fetchProductsFailure,
+} from "./redux/actions"
+import { Product } from "./components/Product"
 
-function fetchProducts() {
-    return fetch("/api/products").then((res) => res.json())
-}
-
-function App() {
-    const { data, error, isLoading } = useQuery("products", fetchProducts)
-    console.log(data)
-
-    if (isLoading) return <div>Loading...</div>
+export default function App() {
+    const dispatch = useDispatch()
+    useQuery(
+        "products",
+        async () => {
+            try {
+                dispatch(fetchProductsRequest())
+                const data = await fetch("/api/products").then((res) =>
+                    res.json()
+                )
+                dispatch(fetchProductsSuccess(data))
+            } catch (error) {
+                dispatch(fetchProductsFailure(error.toString()))
+            }
+        },
+        { staleTime: 10000 }
+    )
+    const { products, isLoading, error } = useSelector(
+        (state) => state.products
+    )
+    if (isLoading)
+        return (
+            <div className="flex justify-center mt-2">
+                <p className="text-lg">Loading...</p>
+            </div>
+        )
     if (error) return <div>An error occurred: {error.message}</div>
 
     return (
-        <div
-            style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "20px",
-            }}
-        >
-            {data.map((product) => (
-                <div key={product.id}>
-                    <ProductCanvas imageSrc={product.imageSrc} />
-                    <div
-                        dangerouslySetInnerHTML={{ __html: product.bodyHtml }}
-                    />
-                </div>
-            ))}
+        <div className=" bg-slate-200 flex justify-center">
+            <div className="max-w-[1200px] md:grid md:grid-cols-3 overflow-hidden">
+                {products.map((product) => (
+                    <Product key={product.id} product={product} />
+                ))}
+            </div>
         </div>
     )
 }
-
-const ProductCanvas = ({ imageSrc }) => {
-    const canvasRef = useRef(null)
-
-    useEffect(() => {
-        const canvas = canvasRef.current
-        const context = canvas.getContext("2d")
-        const image = new Image()
-        image.src = imageSrc
-        image.onload = () => {
-            canvas.width = image.width
-            canvas.height = image.height
-            context.drawImage(image, 0, 0)
-        }
-    }, [imageSrc])
-
-    return <canvas ref={canvasRef} />
-}
-
-export default App
