@@ -1,62 +1,60 @@
 ## Buildateam Code Challenge
 
-> TODO: add unit tests via npm run test command
-
-ReadmeRU на русском: (link placeholder)
+README на русском: [README_RU.md](README_RU.md)
 
 Frontend page: https://048e-217-138-216-244.ngrok-free.app/
 
-> Please ignore ngrok warning and press "Visit Site"
+> Ignore the ngrok warning and click "Visit Site"
 
-### Build steps
+### Build Instructions
 
-1. Create <b>.env</b> file in root folder. Add Shopify access token and store name.
+1. Create a `.env` file in the root directory. Include your Shopify access token and store name.
 
-```.env
+```env
 SHOPIFY_ACCESS_TOKEN=shpat_78d...
 SHOPIFY_STORE_NAME=shop-address.myshopify.com
 ```
 
-2. Install root dependencies.
+2. Install root dependencies:
 
 ```
 npm install
 ```
 
-3. Install client dependencies and make a static build inside client folder.
+3. In the client folder, install dependencies and build:
 
 ```
-cd .\client\
+cd client
 npm install
 npm run build
 cd ..
 ```
 
-4. Setup database and run the server
+4. Set up the database and start the server:
 
 ```
 node setup_database.js
 node express.js
 ```
 
-Now we have our server running locally with backend logic and also serving client on http://localhost:5050/. For production we, of course, need to setup network port.
+The server runs locally, combining backend logic while also serving the client at http://localhost:5050/.
 
-### Test
+### Testing
 
 ```
 npm run test
 ```
 
-### About the development process
+### Development Process
 
 #### Day 1
 
-I started from doing a research of how the project structure could look like. Even thought a challenge defined as Node.js server and frontend on React / Redux, there is still some options that fits the requirements. Initially, I was leaning towards using Next.js for its seamless integration of frontend and backend, native TypeScript support, and SSR capabilities. However, I realized that Next.js usually handles a server by itself, and gears towards serverless architecture. While it's possible to manage your backend manually, doing so negates many benefits of Next.js. Therefore, I opted for a simpler setup, using Express as the core server and maintaining a client internally. That keeps things straightforward yet effective. So I set the project up with this approach.
+Researched potential project structures. Despite the challenge specifying a Node.js server and React/Redux frontend, multiple approaches fit. Originally considered Next.js for its seamless integration and features but eventually chose a simpler Express server setup to keep the backend manual operations straightforward.
 
 #### Day 2
 
-I set up the server to fetch data on start from Shopify and simply caching it for now. I also restucture the data a bit so its not unnesessary nested. Then I set up a clientside with React / Redux and other useful libraries. React is a bit new for me, but pretty intuitive I would say. I set up the client to fetch that cached data from a server and show it on a page nicely. I choose Tailwind css for styling as there wasnt any restictions regarding that matter. I added the logic that preserve the aspect ratio of the image inside canvas. So it works like "cover" css image property just for a canvas. I also clean the bodyHtml to show it in a nice way (though its still defenetly just a text placeholder).
+Configured the server to fetch and cache data from Shopify. Restructured the data for efficiency. Set up the frontend with React/Redux and other libraries. Used Tailwind CSS for styling and implemented logic preserving image aspect ratios on canvas, similar to the "cover" CSS property. Cleaned up bodyHtml for display.
 
 #### Day 3
 
-I setup ngrok to serve the client on a public URL for convinience. I set up a simple sqlite database to store fetched products on a server. I added an example of unit test for api/products endpoint.
+Utilized ngrok for public client URL serving. Implemented a simple SQLite database for server-side product storage. Added unit testing for the api/products endpoint. Completed the challenge within three days, despite a seven-day estimate. Decided to wait until tomorrow in case new ideas or improvements come to mind.
