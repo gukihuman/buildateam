@@ -22,7 +22,7 @@ export default function App() {
                 dispatch(fetchProductsFailure(error.toString()))
             }
         },
-        { staleTime: 10000 }
+        { staleTime: 30000 }
     )
     const { products, isLoading, error } = useSelector(
         (state) => state.products
