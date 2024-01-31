@@ -41,6 +41,12 @@ node express.js
 
 Now we have our server running locally with backend logic and also serving client on http://localhost:5050/. For production we, of course, need to setup network port.
 
+### Test
+
+```
+npm run test
+```
+
 ### About the development process
 
 #### Day 1
@@ -53,4 +59,4 @@ I set up the server to fetch data on start from Shopify and simply caching it fo
 
 #### Day 3
 
-I setup ngrok to serve the client on a public URL for convinience. I set up a simple sqlite database to store fetched products on a server.
+I setup ngrok to serve the client on a public URL for convinience. I set up a simple sqlite database to store fetched products on a server. I added an example of unit test for api/products endpoint.

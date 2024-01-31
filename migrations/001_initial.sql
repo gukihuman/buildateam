@@ -1,6 +1,6 @@
 CREATE TABLE products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    shopifyId TEXT NOT NULL,
+    shopifyId INTEGER UNIQUE NOT NULL,
     bodyHtml TEXT NOT NULL,
     imageSrc TEXT NOT NULL
 )

@@ -33,14 +33,13 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"))
 })
 
-app.listen(PORT, () => {
-    if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV !== "test") {
+    app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`)
-    }
-})
+    })
 
-// Initiate fetch on server start
-fetchShopifyData()
+    fetchShopifyData()
+}
 
 async function fetchShopifyData() {
     const accessToken = process.env.SHOPIFY_ACCESS_TOKEN
@@ -110,9 +109,18 @@ async function saveProductData(products) {
     })
 
     for (const product of products) {
+        const extractedId = product.id.split("/").pop()
         await db.run(
-            "INSERT INTO products (shopifyId, bodyHtml, imageSrc) VALUES (?, ?, ?)",
-            [product.id, product.bodyHtml, product.imageSrc]
+            `INSERT INTO products (shopifyId, bodyHtml, imageSrc) 
+            VALUES (?, ?, ?) 
+            ON CONFLICT(shopifyId) 
+            DO UPDATE SET 
+            bodyHtml = excluded.bodyHtml, 
+            imageSrc = excluded.imageSrc;`,
+            [extractedId, product.bodyHtml, product.imageSrc]
         )
     }
 }
+
+// For test purposes
+export default app
