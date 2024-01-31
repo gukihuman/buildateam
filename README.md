@@ -4,41 +4,48 @@
 
 ReadmeRU на русском: (link placeholder)
 
-Frontend page: (link placeholder)
+Frontend page: https://048e-217-138-216-244.ngrok-free.app/
 
-### Run locally
+> Please ignore ngrok warning and press "Visit Site"
 
-Create <b>.env</b> file in root folder. Add Shopify access token and store name.
+### Build steps
+
+1. Create <b>.env</b> file in root folder. Add Shopify access token and store name.
 
 ```.env
 SHOPIFY_ACCESS_TOKEN=shpat_78d...
 SHOPIFY_STORE_NAME=shop-address.myshopify.com
 ```
 
-Install dependencies and run the server.
+2. Install root dependencies.
 
 ```
 npm install
+```
 
+3. Install client dependencies and make a static build inside client folder.
+
+```
 cd .\client\
 npm install
 npm run build
-
 cd ..
-npm run express
 ```
 
-Now we have our server running on port 5050 with backend logic and also serving client (go to http://localhost:5050/ ).
+4. Setup database and run the server
 
-### Deployment
+```
+node setup_database.js
+node express.js
+```
 
-(placeholder for a description of how deployment is set up)
+Now we have our server running locally with backend logic and also serving client on http://localhost:5050/. For production we, of course, need to setup network port.
 
 ### About the development process
 
 #### Day 1
 
-I started from doing a research of how the project structure could look like. Even thought a challenge defined as Node.js server and frontend on React / Redux, there is still some options that fits the requirements. Initially, I was leaning towards using Next.js for its seamless integration of frontend and backend, native TypeScript support, and SSR capabilities. However, I realized that Next.js usually handles a server by itself, and gears towards serverless architecture. While it's possible to manage your backend manually, doing so negates many benefits of Next.js. Therefore, I opted for a simpler setup, using Express as the core server and maintaining a client internally. That keeps things straightforward yet effective. So I set the project up with this approach. I made sure the dev environment work well with server and client. I also planned how it would be conviniently deployed to the production.
+I started from doing a research of how the project structure could look like. Even thought a challenge defined as Node.js server and frontend on React / Redux, there is still some options that fits the requirements. Initially, I was leaning towards using Next.js for its seamless integration of frontend and backend, native TypeScript support, and SSR capabilities. However, I realized that Next.js usually handles a server by itself, and gears towards serverless architecture. While it's possible to manage your backend manually, doing so negates many benefits of Next.js. Therefore, I opted for a simpler setup, using Express as the core server and maintaining a client internally. That keeps things straightforward yet effective. So I set the project up with this approach.
 
 #### Day 2
 
@@ -46,4 +53,4 @@ I set up the server to fetch data on start from Shopify and simply caching it fo
 
 #### Day 3
 
-(placeholder for a description of the day 3, currently plan to do tests and add database to a server)
+I setup ngrok to serve the client on a public URL for convinience. I set up a simple sqlite database to store fetched products on a server.

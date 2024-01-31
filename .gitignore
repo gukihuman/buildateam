@@ -3,6 +3,7 @@
 /node_modules
 .vscode
 .env
+shopifyData.db
 
 /client/node_modules
 /client/build
