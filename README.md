@@ -53,8 +53,8 @@ Researched potential project structures. Despite the challenge specifying a Node
 
 #### Day 2
 
-Configured the server to fetch and cache data from Shopify. Restructured the data for efficiency. Set up the frontend with React/Redux and other libraries. Used Tailwind CSS for styling and implemented logic preserving image aspect ratios on canvas, similar to the "cover" CSS property. Cleaned up bodyHtml for display.
+Configured the server to fetch and cache data from Shopify. Restructured the data for efficiency. Set up the frontend with React/Redux and other libraries. Used Tailwind CSS for styling and implemented logic preserving image aspect ratios on canvas. Cleaned up bodyHtml for display.
 
 #### Day 3
 
-Utilized ngrok for public client URL serving. Implemented a simple SQLite database for server-side product storage. Added unit testing for the api/products endpoint. Completed the challenge within three days, despite a seven-day estimate. Decided to wait until tomorrow in case new ideas or improvements come to mind.
+Utilized ngrok for public client URL serving. Implemented a simple SQLite database for server-side product storage. Added unit testing for the api/products endpoint.
