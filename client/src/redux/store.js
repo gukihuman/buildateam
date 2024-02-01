@@ -11,7 +11,7 @@ const initialState = {
     error: null,
 }
 
-function productsReducer(state = initialState, action) {
+function reducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_PRODUCTS_REQUEST:
             return { ...state, isLoading: true }
@@ -24,8 +24,4 @@ function productsReducer(state = initialState, action) {
     }
 }
 
-export const store = configureStore({
-    reducer: {
-        products: productsReducer,
-    },
-})
+export const store = configureStore({ reducer })

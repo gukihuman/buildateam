@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react"
 import DOMPurify from "dompurify"
-import parse from "html-react-parser"
 
 const ProductCanvas = ({ imageSrc }) => {
     const canvasRef = useRef(null)
@@ -13,6 +12,7 @@ const ProductCanvas = ({ imageSrc }) => {
         image.src = imageSrc
         image.onload = () => {
             const maxSize = Math.max(image.width, image.height)
+
             // Set square canvas based on the largest dimension of the image
             canvas.width = maxSize
             canvas.height = maxSize
@@ -72,7 +72,7 @@ const extractProductDetails = (html) => {
     ]
     detailElements.forEach((element) => {
         const key = element.textContent.trim()
-        let value = element.nextSibling.textContent.trim()
+        const value = element.nextSibling.textContent.trim()
 
         // Skip some info
         for (let i = 0; i < whatToSkip.length; i++) {

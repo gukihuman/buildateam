@@ -24,9 +24,10 @@ export default function App() {
         },
         { staleTime: 30000 }
     )
-    const { products, isLoading, error } = useSelector(
-        (state) => state.products
-    )
+    const products = useSelector((state) => state.products)
+    const isLoading = useSelector((state) => state.isLoading)
+    const error = useSelector((state) => state.error)
+
     if (isLoading)
         return (
             <div className="flex justify-center mt-2">
