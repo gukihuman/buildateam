@@ -2,7 +2,7 @@
 
 README in english: [README.md](README.md)
 
-Страница Frontend: https://048e-217-138-216-244.ngrok-free.app/
+Страница Frontend: https://60ea-152-89-163-228.ngrok-free.app/
 
 > Игнорируйте предупреждение ngrok и нажмите "Visit Site"
 
