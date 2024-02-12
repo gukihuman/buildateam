@@ -2,9 +2,7 @@
 
 README на русском: [README_RU.md](README_RU.md)
 
-Frontend page: ![frontend preview](preview.webp)
-
-> Ignore the ngrok warning and click "Visit Site"
+![frontend preview](preview.webp)
 
 ### Build Instructions
 

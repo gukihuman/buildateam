@@ -2,7 +2,7 @@
 
 README in english: [README.md](README.md)
 
-Страница Frontend: ![frontend preview](preview.webp)
+![frontend preview](preview.webp)
 
 ### Инструкция по сборке
 
