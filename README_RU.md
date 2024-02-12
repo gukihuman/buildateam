@@ -2,9 +2,7 @@
 
 README in english: [README.md](README.md)
 
-Страница Frontend: https://b498-93-80-44-17.ngrok-free.app
-
-> Игнорируйте предупреждение ngrok и нажмите "Visit Site"
+Страница Frontend: ![frontend preview](preview.webp)
 
 ### Инструкция по сборке
 

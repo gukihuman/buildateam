@@ -2,7 +2,7 @@
 
 README на русском: [README_RU.md](README_RU.md)
 
-Frontend page: https://b498-93-80-44-17.ngrok-free.app
+Frontend page: ![frontend preview](preview.webp)
 
 > Ignore the ngrok warning and click "Visit Site"
 
